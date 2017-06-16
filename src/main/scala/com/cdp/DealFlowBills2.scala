@@ -60,6 +60,7 @@ object DealFlowBills2 {
     val stream = if (zk.znodeIsExists(s"${topic}offset")) {
       val nor = zk.znodeDataGet(s"${topic}offset")
       val newOffset = Map(new TopicPartition(nor(0).toString, nor(1).toInt) -> nor(2).toLong)//创建以topic，分区为k 偏移度为v的map
+
       println(s"[ DealFlowBills2 ] --------------------------------------------------------------------")
       println(s"[ DealFlowBills2 ] topic ${nor(0).toString}")
       println(s"[ DealFlowBills2 ] Partition ${nor(1).toInt}")
